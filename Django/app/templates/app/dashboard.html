@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List with Array</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp,container-queries"></script>
+</head>
+<body class="bg-gradient-to-r from-blue-600 to-violet-600 min-h-screen flex items-center justify-center p-6">
+    <div class="bg-white shadow-lg rounded-lg p-8 w-full max-w-md">
+        <h1 class="text-2xl font-bold mb-4 text-center text-gray-800">To-Do List</h1>
+
+         
+        <div class="mb-4">
+            <input type="text" id="taskInput" placeholder="Enter a task" class="w-full p-3 rounded-lg border border-gray-300 mb-4 focus:outline-none focus:ring-2 focus:ring-blue-500">
+            <button onclick="addTask()" class="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition duration-300">Add Task</button>
+        </div>
+
+         
+        <ul id="todoList" class="list-disc list-inside text-gray-800"></ul>
+    </div>
+
+    <script>
+        
+        let tasks = [];
+
+       
+        function renderTasks() {
+            const todoList = document.getElementById('todoList');
+            todoList.innerHTML = ''; 
+
+            tasks.map((task, index) => {
+
+                const listItem = document.createElement('li');
+                listItem.classList.add('mb-2', 'flex', 'justify-between', 'items-center', 'p-3',
+                 'bg-blue-600', 'text-white', 'rounded-lg');
+
+                 
+                const taskSpan = document.createElement('span');
+                taskSpan.textContent = task;
+                listItem.appendChild(taskSpan);
+
+               
+                const deleteButton = document.createElement('button');
+                deleteButton.textContent = 'Delete';
+                deleteButton.classList.add('text-white', 'ml-4');
+                deleteButton.onclick = function () {
+                    deleteTask(index);
+                };
+
+                listItem.appendChild(deleteButton);
+                todoList.appendChild(listItem);
+            });
+        }
+
+         
+        function addTask() {
+            const taskInput = document.getElementById('taskInput');
+            const taskText = taskInput.value.trim();
+
+           
+            if (taskText !== '') {
+                tasks.push(taskText);  
+                renderTasks();  
+                taskInput.value = ''; 
+            }
+        }
+
+        
+        function deleteTask(index) {
+            tasks.splice(index, 1);  
+            renderTasks(); 
+        }
+
+        document.getElementById('taskInput').addEventListener('keyup', function (event) {
+            if (event.key === 'Enter') {
+                addTask();
+            }
+        });
+    </script>
+</body>
+</html>

@@ -50,7 +50,10 @@
     <Compile Include="Django\wsgi.py" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="app\templates\app\index.html" />
+    <Content Include="app\static\general.css">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="app\templates\app\dashboard.html" />
     <Content Include="app\templates\app\register.html">
       <SubType>Code</SubType>
     </Content>
@@ -59,6 +62,7 @@
   <ItemGroup>
     <Folder Include="app\" />
     <Folder Include="app\migrations\" />
+    <Folder Include="app\static\" />
     <Folder Include="app\templates\" />
     <Folder Include="app\templates\app\" />
     <Folder Include="Django\" />
