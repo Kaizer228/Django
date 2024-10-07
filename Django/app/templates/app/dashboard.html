@@ -8,7 +8,7 @@
 
 </head>
 <body class="bg-gradient-to-r from-blue-600 to-violet-600 h-screen flex items-center justify-center p-6">
-    <div class="bg-white shadow-lg rounded-lg p-8 w-1/3 max-lg:w-full">
+    <div class="bg-white shadow-lg rounded-lg p-8 w-1/2 max-lg:w-full">
         <h1 class="text-2xl font-bold mb-4 text-center text-gray-800">To-Do List</h1>
 
 
@@ -23,13 +23,13 @@
       
         <div class="w-full mt-6  max-h-[30rem] overflow-auto">
             {% for item in tasks %}
-            <div class="flex items-center justify-between px-3 bg-blue-600 rounded-lg p-3 w-full mt-2">
-                <h1 class="text-white"> {{ item.task }}</h1>
-                <h1 class="text-white"> {{ item.priority }}</h1>
-                <h1 class="text-white"> {{ item.date }}</h1>
+            <div class="flex items-center justify-between max-lg:block px-3 bg-blue-600 rounded-lg p-3 w-full mt-2">
+                <h1 class="text-white">Task: {{ item.task }}</h1>
+                <h1 class="text-white">Priority: {{ item.priority }}</h1>
+                <h1 class="text-white">Deadline: {{ item.date }}</h1>
 
                 <a href="?DELETE={{ forloop.counter0 }}" class="text-white
-                     rounded-lg">Delete</a>
+                     rounded-lg bg-red-600 px-2">Delete</a>
             </div>
             {% empty %}
             <h1 class="text-white p-3 text-center rounded-lg bg-red-600 w-full mt-2">No tasks yet.</h1>
