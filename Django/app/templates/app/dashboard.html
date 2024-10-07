@@ -20,11 +20,12 @@
 
       
         <div class="w-full mt-6  max-h-[30rem] overflow-auto">
-            {% for task in tasks %}
+            {% for item in tasks %}
             <div class="flex items-center justify-between px-3 bg-blue-600 rounded-lg p-3 w-full mt-2">
-                <h1 class="text-white">{{ task }}</h1>
-             
-                <a href="?DELETE={{ forloop.counter0 }}" class="text-white 
+                <h1 class="text-white"> {{ item.task }}</h1>
+                <h1 class="text-white"> {{ item.date }}</h1>
+
+                <a href="?DELETE={{ forloop.counter0 }}" class="text-white
                      rounded-lg">Delete</a>
             </div>
             {% empty %}

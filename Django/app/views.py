@@ -4,7 +4,7 @@ from django import forms
 
 tasks = []  
 
-from django import forms
+
 
 
 class AddTaskForm(forms.Form):
@@ -14,6 +14,16 @@ class AddTaskForm(forms.Form):
             'placeholder': 'Add your task here...'
         })
     )
+
+    date = forms.DateField(
+        label="",
+        widget=forms.DateInput(attrs={
+            'class': 'w-full p-3 mb-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500',
+            'placeholder': 'Select a date',
+            'type': 'date' 
+        })
+    )
+
 
 
 def dashboard(request):
@@ -28,8 +38,10 @@ def dashboard(request):
         form = AddTaskForm(request.POST)
         if form.is_valid():
             task = form.cleaned_data["task"]
-            tasks.append(task)
+            date = form.cleaned_data["date"]
+            tasks.append({"task": task, "date": date})
             return redirect('dashboard')
+
     else:
         form = AddTaskForm()
 
