@@ -34,9 +34,6 @@
     <Compile Include="app\apps.py" />
     <Compile Include="app\migrations\__init__.py" />
     <Compile Include="app\models.py" />
-    <Compile Include="app\templates\app\login.html">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="app\tests.py" />
     <Compile Include="app\urls.py">
       <SubType>Code</SubType>
@@ -54,9 +51,6 @@
       <SubType>Code</SubType>
     </Content>
     <Content Include="app\templates\app\dashboard.html" />
-    <Content Include="app\templates\app\register.html">
-      <SubType>Code</SubType>
-    </Content>
     <Content Include="requirements.txt" />
   </ItemGroup>
   <ItemGroup>

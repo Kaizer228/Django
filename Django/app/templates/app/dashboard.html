@@ -10,21 +10,26 @@
     <div class="bg-white shadow-lg rounded-lg p-8 w-full max-w-md">
         <h1 class="text-2xl font-bold mb-4 text-center text-gray-800">To-Do List</h1>
 
+       
         <form method="POST" action="{% url 'dashboard' %}">
             {% csrf_token %}
-            <div class="mb-4">
-                <input type="text" name="task" placeholder="Enter a task" class="w-full p-3 rounded-lg border border-gray-300 mb-4 focus:outline-none focus:ring-2 focus:ring-blue-500">
-                <button type="submit" class="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition duration-300">Add Task</button>
-            </div>
+            {{ form }} 
+            <button type="submit" class="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition duration-300">Add Task</button>
         </form>
-    
-        <ul class="list-disc pl-5 space-y-2">
-            {% for task in todo_list %}
-            <li class="text-gray-700">{{ task }}</li>
+
+      
+        <div class="w-full mt-6 ">
+            {% for task in tasks %}
+            <div class="flex items-center justify-between px-3 bg-blue-600 rounded-lg p-3 w-full mt-2">
+                <h1 class="text-white">{{ task }}</h1>
+             
+                <a href="?delete={{ forloop.counter0 }}" class="text-white 
+                     rounded-lg">Delete</a>
+            </div>
             {% empty %}
-            <li class="text-gray-500">No tasks yet.</li>
+            <h1 class="text-white p-3 text-center rounded-lg bg-red-600 w-full mt-2">No tasks yet.</h1>
             {% endfor %}
-        </ul>
+        </div>
     </div>
 </body>
 </html>

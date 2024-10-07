@@ -1,41 +1,39 @@
-from django.shortcuts import render
- 
-
-def login(request):
-
-   return render(request, "app/login.html",
-      {
-         'title':'Login',
-     })
-
-
-def register(request):
-    return render(request, "app/register.html",
-     {
-         'title':'Register', 
-     })
-
-
-
 from django.shortcuts import render, redirect
+from django import forms
+
+
+tasks = []  
+
+from django import forms
+
+class AddTaskForm(forms.Form):
+    task = forms.CharField(label="",
+        widget=forms.TextInput(attrs={
+            'class': 'w-full p-3 mb-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500',
+            'placeholder': 'Add your task here...'
+        })
+    )
 
 def dashboard(request):
-    
-    if 'todo_list' not in request.session:
-        request.session['todo_list'] = []
-    
-    if request.method == 'POST':
-       
-        new_task = request.POST.get('task', '').strip()
-        if new_task:  
-           
-            request.session['todo_list'].append(new_task)
-            request.session.modified = True   
-        return redirect('dashboard')   
-    
-    todo_list = request.session['todo_list']
+  
+    if 'delete' in request.GET:
+        task_index = int(request.GET.get('delete')) 
+        if 0 <= task_index < len(tasks): 
+            tasks.pop(task_index)  
+        return redirect('dashboard') 
+
+   
+    if request.method == "POST":
+        form = AddTaskForm(request.POST)
+        if form.is_valid():
+            task = form.cleaned_data["task"]
+            tasks.append(task)
+            return redirect('dashboard')
+    else:
+        form = AddTaskForm()
 
     return render(request, "app/dashboard.html", {
         'title': 'Dashboard',
-        'todo_list': todo_list,
+        'tasks': tasks,
+        'form': form
     })
