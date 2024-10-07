@@ -40,6 +40,9 @@
     </Compile>
     <Compile Include="app\views.py" />
     <Compile Include="app\__init__.py" />
+    <Compile Include="dist\test.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="manage.py" />
     <Compile Include="Django\__init__.py" />
     <Compile Include="Django\settings.py" />
