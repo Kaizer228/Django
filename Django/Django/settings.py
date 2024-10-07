@@ -39,6 +39,11 @@ INSTALLED_APPS = [
     'app'
 ]
 
+
+
+ALLOWED_HOSTS = ['*']  # Allows all hosts (not recommended in production without proper security)
+
+
 # Middleware framework
 # https://docs.djangoproject.com/en/2.1/topics/http/middleware/
 MIDDLEWARE = [
