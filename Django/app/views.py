@@ -16,8 +16,8 @@ class AddTaskForm(forms.Form):
 
 def dashboard(request):
   
-    if 'delete' in request.GET:
-        task_index = int(request.GET.get('delete')) 
+    if 'DELETE' in request.GET:
+        task_index = int(request.GET.get('DELETE')) 
         if 0 <= task_index < len(tasks): 
             tasks.pop(task_index)  
         return redirect('dashboard') 
