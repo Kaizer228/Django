@@ -40,9 +40,6 @@
     </Compile>
     <Compile Include="app\views.py" />
     <Compile Include="app\__init__.py" />
-    <Compile Include="dist\test.py">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="manage.py" />
     <Compile Include="Django\__init__.py" />
     <Compile Include="Django\settings.py" />
@@ -63,7 +60,6 @@
     <Folder Include="app\templates\" />
     <Folder Include="app\templates\app\" />
     <Folder Include="Django\" />
-    <Folder Include="dist\" />
   </ItemGroup>
   <ItemGroup>
     <Interpreter Include="env\">
