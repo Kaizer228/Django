@@ -60,6 +60,7 @@
     <Folder Include="app\templates\" />
     <Folder Include="app\templates\app\" />
     <Folder Include="Django\" />
+    <Folder Include="dist\" />
   </ItemGroup>
   <ItemGroup>
     <Interpreter Include="env\">

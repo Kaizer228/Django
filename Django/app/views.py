@@ -6,6 +6,7 @@ tasks = []
 
 from django import forms
 
+
 class AddTaskForm(forms.Form):
     task = forms.CharField(label="",
         widget=forms.TextInput(attrs={
@@ -14,12 +15,12 @@ class AddTaskForm(forms.Form):
         })
     )
 
+
 def dashboard(request):
   
     if 'DELETE' in request.GET:
         task_index = int(request.GET.get('DELETE')) 
-        if 0 <= task_index < len(tasks): 
-            tasks.pop(task_index)  
+        tasks.pop(task_index)  
         return redirect('dashboard') 
 
    
