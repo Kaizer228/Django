@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ title }}</title>
     <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp,container-queries"></script>
+
 </head>
 <body class="bg-gradient-to-r from-blue-600 to-violet-600 h-screen flex items-center justify-center p-6">
-    <div class="bg-white shadow-lg rounded-lg h-1/2 p-8 w-full max-w-md">
+    <div class="bg-white shadow-lg rounded-lg p-8 w-full max-w-md">
         <h1 class="text-2xl font-bold mb-4 text-center text-gray-800">To-Do List</h1>
 
         <form method="POST" action="{% url 'dashboard' %}">
@@ -17,7 +19,7 @@
         </form>
 
       
-        <div class="w-full mt-6  h-[60%] overflow-auto">
+        <div class="w-full mt-6  max-h-[30rem] overflow-auto">
             {% for task in tasks %}
             <div class="flex items-center justify-between px-3 bg-blue-600 rounded-lg p-3 w-full mt-2">
                 <h1 class="text-white">{{ task }}</h1>
