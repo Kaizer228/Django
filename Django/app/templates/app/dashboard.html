@@ -14,20 +14,28 @@
 
         <form method="POST" action="{% url 'dashboard' %}">
             {% csrf_token %}
-            {{ form }} 
-            <button type="submit" class="w-full bg-blue-600 text-white py-3 rounded-lg 
-              hover:bg-blue-700 transition duration-300">Add Task</button>
+            {{ form }}
+            <button type="submit" class="w-full bg-blue-600 text-white py-3 rounded-lg
+              hover:bg-blue-700 transition duration-300">
+                Add Task
+            </button>
         </form>
 
         <div class="w-full mt-6  max-h-[30rem] max-lg:max-h-[10rem] overflow-auto">
+         
             {% for item in tasks %}
             <div class="flex items-center justify-between max-lg:block px-3  bg-blue-600 rounded-lg p-3 w-full mt-2">
                 <h1 class="text-white">Task: {{ item.task }}</h1>
                 <h1 class="text-white">Priority: {{ item.priority }}</h1>
                 <h1 class="text-white">Deadline: {{ item.date }}</h1>
 
-                <a href="?DELETE={{ forloop.counter0 }}" class="text-white
+                <div>
+                    <a href="{% url 'edit' %}?arrayLocation={{forloop.counter0}}"
+                       class="text-white rounded-full bg-green-600 px-2">Update</a>
+                    <a href="?DELETE={{ forloop.counter0 }}" class="text-white
                      rounded-full bg-red-600 px-2">Delete</a>
+                </div>
+
             </div>
             {% empty %}
             <h1 class="text-white p-3 text-center rounded-lg bg-red-600 w-full mt-2">No tasks yet.</h1>

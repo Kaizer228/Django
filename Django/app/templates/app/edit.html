@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp,container-queries"></script>
+</head>
+<body class="bg-gradient-to-r from-blue-600 to-violet-600 h-screen flex items-center justify-center p-6 max-lg:p-2">
+    <div class="bg-white shadow-lg rounded-lg p-8 w-1/2 max-lg:w-full ">
+        <h1 class="text-2xl font-bold mb-4 text-center text-gray-800">To-Do List</h1>
+
+        <form method="POST" action="{% url 'edit' %}">
+            {% csrf_token %}
+            <input type="hidden" name="arrayLocation" value="{{ arrayLocation }}">
+
+            <div class="mb-4">
+                <label for="task" class="block text-gray-700">Task</label>
+                <input type="text"
+                       id="task"
+                       name="task"
+                       class="w-full p-3 mb-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                       placeholder="Add your task here..."
+                       maxlength="100"
+                       value={{task.task}}
+                       required>
+            </div>
+
+
+            <div class="mb-4">
+                <label for="date" class="block text-gray-700">Previous Date <b>{{task.date}}</b> </label>
+                <input type="date"
+                       id="date"
+                       name="date"
+                       required
+                       class="w-full p-3 mb-2 border border-gray-300
+                       rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" />
+
+            </div>
+
+
+            <div class="mb-4">
+                <label for="priority" class="block text-gray-700">Previous Status  <b>{{task.priority}}</b></label>
+                <select id="priority"
+                        name="priority"
+                        class="w-full p-3 mb-2 border
+                        border-gray-300 rounded-lg focus:outline-none
+                        focus:ring-2 focus:ring-blue-500"
+                        required>
+
+                    <option value="Urgent">Urgent</option>
+                    <option value="Not Urgent">Not Urgent</option>
+                    <option value="Not Important">Not Important</option>
+                </select>
+            </div>
+
+
+            <button type="submit" class="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition duration-300">
+                Edit Task
+            </button>
+        </form>
+    </div>
+</body>
+</html>
