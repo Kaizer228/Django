@@ -41,7 +41,6 @@ INSTALLED_APPS = [
 
 
 
-ALLOWED_HOSTS = ['*']  # Allows all hosts (not recommended in production without proper security)
 
 
 # Middleware framework
@@ -76,7 +75,13 @@ TEMPLATES = [
     },
 ]
 
+
+#for build app
 WSGI_APPLICATION = 'Django.wsgi.application'
+
+ALLOWED_HOSTS = ['*']  # Allows all hosts (not recommended in production without proper security)
+
+
 
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
